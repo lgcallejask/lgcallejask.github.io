@@ -1,0 +1,27 @@
+title: lgcallejask
+description: Personal website and writing by lgcallejask.
+author: lgcallejask
+email: lgcallejask@example.com
+url: "https://lgcallejask.github.io"
+
+# Permalink structure
+permalink: /writing/:title/
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: null
+
+# Navigation items
+navigation:
+  - title: Writing
+    url: /
+  - title: About
+    url: /about/
+  - title: Projects
+    url: /projects/
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .gitignore
