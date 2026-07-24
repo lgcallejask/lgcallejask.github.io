@@ -5,6 +5,10 @@
       {% for item in site.navigation %}
         <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
       {% endfor %}
+      <span id="theme-toggle" class="theme-toggle-switch" title="Toggle dark mode" aria-label="Toggle dark mode" role="switch" tabindex="0">
+        <div class="theme-toggle-track"></div>
+        <div class="theme-toggle-knob"></div>
+      </span>
     </nav>
   </div>
 </header>

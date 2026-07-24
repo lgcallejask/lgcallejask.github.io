@@ -2,31 +2,44 @@
   <div>
     &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
   </div>
-  <div>
-    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">Theme</button>
-  </div>
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
-    
-    toggleBtn.addEventListener('click', function() {
-      var currentTheme = document.documentElement.getAttribute('data-theme');
-      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  (function() {
+    function initThemeToggle() {
+      var toggleBtn = document.getElementById('theme-toggle');
+      if (!toggleBtn) return;
       
-      var newTheme;
-      if (currentTheme === 'dark') {
-        newTheme = 'light';
-      } else if (currentTheme === 'light') {
-        newTheme = 'dark';
-      } else {
-        newTheme = systemDark ? 'light' : 'dark';
+      function toggleTheme() {
+        var currentTheme = document.documentElement.getAttribute('data-theme');
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        var newTheme;
+        if (currentTheme === 'dark') {
+          newTheme = 'light';
+        } else if (currentTheme === 'light') {
+          newTheme = 'dark';
+        } else {
+          newTheme = systemDark ? 'light' : 'dark';
+        }
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
       }
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-  });
+
+      toggleBtn.addEventListener('click', toggleTheme);
+      toggleBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleTheme();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initThemeToggle);
+    } else {
+      initThemeToggle();
+    }
+  })();
 </script>
