@@ -12,6 +12,14 @@ markdown: kramdown
 highlighter: rouge
 theme: null
 
+# Plugins
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: true
+
 # Navigation items
 navigation:
   - title: Writing

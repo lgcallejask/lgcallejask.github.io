@@ -23,3 +23,5 @@ function greetUser(name) {
 > "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away." — Antoine de Saint-Exupéry
 
 Stay tuned for more essays and notes!
+
+test link [2026-07-20-digital-minimalism](2026-07-20-digital-minimalism.md)

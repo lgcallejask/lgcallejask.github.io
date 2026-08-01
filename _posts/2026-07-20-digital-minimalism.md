@@ -16,3 +16,6 @@ When writing in standard Markdown:
 3. **Control**: Version control with Git allows tracking changes over time effortlessly.
 
 Using Jekyll with GitHub Pages provides a seamless pipeline for publishing plain text notes directly to the web.
+
+
+test link [2026-07-22-welcome-to-my-site](2026-07-22-welcome-to-my-site.md)

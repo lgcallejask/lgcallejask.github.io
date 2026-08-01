@@ -21,6 +21,7 @@ Designed after the aesthetic of **Steph Ango (stephango.com)**, using the **Flex
 ```text
 .
 ├── _config.yml          # Site configuration & metadata
+├── Gemfile              # Ruby dependencies & Jekyll plugins
 ├── index.md             # Homepage content
 ├── about.md             # About page
 ├── projects.md          # Featured projects page
@@ -38,19 +39,19 @@ Designed after the aesthetic of **Steph Ango (stephango.com)**, using the **Flex
 
 ### Using Docker (Windows CMD)
 ```cmd
-cd /d D:\git\lgcallejask.github.io
-docker run --rm -it -v "%cd%:/srv/jekyll" -p 4000:4000 jekyll/jekyll jekyll serve --host 0.0.0.0 --force_polling
+docker run --rm -it -v "%cd%:/srv/jekyll" -p 4000:4000 jekyll/jekyll sh -c "bundle install && jekyll serve --host 0.0.0.0 --force_polling"
 ```
 Open **`http://localhost:4000`** in your browser.
 
 ### Using Docker (PowerShell)
 ```powershell
-docker run --rm -it -v "${PWD}:/srv/jekyll" -p 4000:4000 jekyll/jekyll jekyll serve --host 0.0.0.0 --force_polling
+docker run --rm -it -v "${PWD}:/srv/jekyll" -p 4000:4000 jekyll/jekyll sh -c "bundle install && jekyll serve --host 0.0.0.0 --force_polling"
 ```
 
 ### Using Native Jekyll (If Ruby is installed)
 ```bash
-jekyll serve
+bundle install
+bundle exec jekyll serve
 ```
 
 ---
