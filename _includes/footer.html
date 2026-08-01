@@ -10,21 +10,22 @@
       var toggleBtn = document.getElementById('theme-toggle');
       if (!toggleBtn) return;
       
+      function updateThemeState() {
+        var currentTheme = document.documentElement.getAttribute('data-theme');
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = currentTheme === 'dark' || (!currentTheme && systemDark);
+        toggleBtn.setAttribute('aria-checked', isDark ? 'true' : 'false');
+      }
+
       function toggleTheme() {
         var currentTheme = document.documentElement.getAttribute('data-theme');
         var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        var newTheme;
-        if (currentTheme === 'dark') {
-          newTheme = 'light';
-        } else if (currentTheme === 'light') {
-          newTheme = 'dark';
-        } else {
-          newTheme = systemDark ? 'light' : 'dark';
-        }
+        var isDark = currentTheme === 'dark' || (!currentTheme && systemDark);
+        var newTheme = isDark ? 'light' : 'dark';
         
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        updateThemeState();
       }
 
       toggleBtn.addEventListener('click', toggleTheme);
@@ -34,6 +35,17 @@
           toggleTheme();
         }
       });
+
+      window.addEventListener('keydown', function(e) {
+        if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
+          return;
+        }
+        if ((e.key === 'd' || e.key === 'D') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          toggleTheme();
+        }
+      });
+
+      updateThemeState();
     }
 
     if (document.readyState === 'loading') {
