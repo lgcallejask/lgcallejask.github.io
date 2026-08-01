@@ -3,7 +3,7 @@
     <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
     <nav>
       {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+        <a href="{{ item.url | relative_url }}" data-nav="{{ item.title | downcase }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
       {% endfor %}
       <span id="theme-toggle" title="Toggle dark mode (or press 'd')" aria-label="Toggle dark mode" type="button" role="switch" aria-checked="false" tabindex="0">
         <div class="theme-toggle-slide"></div>

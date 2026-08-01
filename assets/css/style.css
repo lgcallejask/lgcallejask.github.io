@@ -386,6 +386,56 @@ footer {
   :root:not([data-theme="light"]) .icon-moon { display: block; }
 }
 
+@media (max-width: 600px) {
+  html {
+    font-size: 15.5px;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .site-title {
+    font-size: 1.05rem;
+  }
+
+  /* Show only About link and Theme Switch on mobile header */
+  nav a:not([data-nav="about"]) {
+    display: none;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+  }
+
+  .bio-intro {
+    font-size: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .post-header {
+    margin-bottom: 1.75rem;
+  }
+
+  footer {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+  }
+}
+
 @media (max-width: 550px) {
   .post-item {
     flex-direction: column;
@@ -418,4 +468,5 @@ footer {
   max-width: 480px;
   margin: 0 auto;
 }
+
 
