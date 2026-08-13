@@ -24,6 +24,8 @@ relative_links:
 navigation:
   - title: Writing
     url: /
+  - title: Topics
+    url: /topics/
   - title: About
     url: /about/
   - title: Projects
