@@ -12,10 +12,10 @@ layout: default
       {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
       <span>&middot;</span>
       <span>{{ minutes }} min read</span>
-      {% if page.tags %}
+      {% if page.topics %}
         <span>&middot;</span>
-        {% for tag in page.tags %}
-          <span class="tag-pill">{{ tag }}</span>
+        {% for topic in page.topics %}
+          <a href="{{ '/topics/' | append: topic | append: '/' | relative_url }}" class="topic-pill">{{ topic }}</a>
         {% endfor %}
       {% endif %}
     </div>

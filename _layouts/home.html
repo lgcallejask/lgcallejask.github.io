@@ -6,6 +6,24 @@ layout: default
   {{ content }}
 </section>
 
+<section class="topics-section">
+  <p><a href="{{ '/topics/' | relative_url }}" class="section-title-link">Topics</a></p>
+  <div class="topics-cloud">
+    {% assign raw_topics = "" | split: "" %}
+    {% for post in site.posts %}
+      {% if post.topics %}
+        {% for topic in post.topics %}
+          {% assign raw_topics = raw_topics | push: topic %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+    {% assign sorted_topics = raw_topics | uniq | sort %}
+    {% for topic in sorted_topics %}
+      <a href="{{ '/topics/' | append: topic | append: '/' | relative_url }}" class="topic-link">{{ topic }}</a>{% unless forloop.last %}<span class="muted">, </span>{% endunless %}
+    {% endfor %}
+  </div>
+</section>
+
 <section class="writing-section">
   <h2>Writing</h2>
   <ul class="post-list">

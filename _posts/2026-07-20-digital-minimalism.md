@@ -2,7 +2,11 @@
 layout: post
 title: "Notes on Digital Minimalism and Markdown"
 date: 2026-07-20 14:30:00 -0300
-tags: [notes, workflow]
+topics:
+  - notes
+  - workflow
+  - ai
+  - ia
 ---
 
 In digital note-taking and publishing, portable formats ensure long-term durability of content.

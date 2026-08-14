@@ -2,7 +2,9 @@
 layout: post
 title: "Welcome to My Site"
 date: 2026-07-22 10:00:00 -0300
-tags: [meta, static-sites]
+topics:
+  - meta
+  - static-sites
 ---
 
 Welcome to my personal site built with **Jekyll** and hosted on **GitHub Pages**.

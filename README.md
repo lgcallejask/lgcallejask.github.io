@@ -65,7 +65,9 @@ To publish a new post, create a file inside `_posts/` with the filename format `
 layout: post
 title: "Title of Your Post"
 date: 2026-07-22 10:00:00 -0300
-tags: [writing, notes]
+topics:
+  - notes
+  - workflow
 ---
 
 Write your Markdown content here...
