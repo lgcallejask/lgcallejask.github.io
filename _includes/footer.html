@@ -48,39 +48,10 @@
       updateThemeState();
     }
 
-    var postUrls = [
-      {% for post in site.posts %}
-        "{{ post.url | relative_url }}"{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ];
-
-    function initRandomPost() {
-      var randomBtn = document.querySelector('nav a[data-nav="random"]');
-      if (!randomBtn || postUrls.length === 0) return;
-
-      randomBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var currentPath = window.location.pathname;
-        
-        var available = postUrls.filter(function(url) {
-          return url !== currentPath && url !== currentPath + '/';
-        });
-
-        var pool = available.length > 0 ? available : postUrls;
-        var randomIndex = Math.floor(Math.random() * pool.length);
-        window.location.href = pool[randomIndex];
-      });
-    }
-
-    function init() {
-      initThemeToggle();
-      initRandomPost();
-    }
-
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', initThemeToggle);
     } else {
-      init();
+      initThemeToggle();
     }
   })();
 </script>
