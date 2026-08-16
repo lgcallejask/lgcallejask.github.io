@@ -500,8 +500,8 @@ footer {
     font-size: 1.05rem;
   }
 
-  /* Show only About link and Theme Switch on mobile header */
-  nav a:not([data-nav="about"]) {
+  /* Show only Random link and Theme Switch on mobile header */
+  nav a:not([data-nav="random"]) {
     display: none;
   }
 

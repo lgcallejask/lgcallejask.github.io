@@ -26,8 +26,8 @@ navigation:
     url: /
   - title: Topics
     url: /topics/
-  - title: About
-    url: /about/
+  - title: Random
+    url: "#"
   - title: Projects
     url: /projects/
 
