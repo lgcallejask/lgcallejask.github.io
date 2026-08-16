@@ -32,7 +32,9 @@ module Jekyll
       @name = 'index.html'
 
       self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'topic.html')
+      self.content             = ''
+      self.data                = {}
+      self.data['layout']      = 'topic'
       self.data['topic_title'] = topic
       self.data['title']       = "Topics / #{topic}"
       self.data['permalink']   = "/topics/#{topic}/"
