@@ -7,7 +7,7 @@ layout: default
 </section>
 
 <section class="topics-section">
-  <p><a href="{{ '/topics/' | relative_url }}" class="section-title-link">Topics</a></p>
+  <p><a href="{{ '/topics/' | relative_url }}" class="section-title-link"><span data-i18n="sections.topics">{{ site.data.translations.en.sections.topics }}</span></a></p>
   <div class="topics-cloud">
     {% assign raw_topics = "" | split: "" %}
     {% for post in site.posts %}
@@ -25,10 +25,10 @@ layout: default
 </section>
 
 <section class="writing-section">
-  <h2>Writing</h2>
+  <h2><span data-i18n="sections.writing">{{ site.data.translations.en.sections.writing }}</span></h2>
   <ul class="post-list">
     {% for post in site.posts %}
-      <li class="post-item">
+      <li class="post-item" data-lang="{{ post.lang | default: 'en' }}">
         <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </li>

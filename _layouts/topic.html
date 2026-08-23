@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="topic-header">
-  <h1 class="topic-title-breadcrumb"><a href="{{ '/topics/' | relative_url }}" class="topic-parent-link">Topics</a> / {{ page.topic_title }}</h1>
+  <h1 class="topic-title-breadcrumb"><a href="{{ '/topics/' | relative_url }}" class="topic-parent-link"><span data-i18n="topic_page.breadcrumb_prefix">{{ site.data.translations.en.topic_page.breadcrumb_prefix }}</span></a> / {{ page.topic_title }}</h1>
   {% assign matching_posts = "" | split: "" %}
   {% for post in site.posts %}
     {% if post.topics contains page.topic_title %}
@@ -15,7 +15,7 @@ layout: default
 
 <ul class="post-list">
   {% for post in matching_posts %}
-    <li class="post-item">
+    <li class="post-item" data-lang="{{ post.lang | default: 'en' }}">
       <span class="post-date">{{ post.date | date: "%Y &middot; %m" }}</span>
       <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
     </li>

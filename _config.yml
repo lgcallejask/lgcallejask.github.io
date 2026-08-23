@@ -35,3 +35,22 @@ navigation:
 exclude:
   - README.md
   - .gitignore
+
+# Default Front Matter values
+defaults:
+  - scope:
+      path: "_posts/es"
+    values:
+      lang: "es"
+      permalink: "/es/writing/:title/"
+  - scope:
+      path: "_posts/en"
+    values:
+      lang: "en"
+      permalink: "/writing/:title/"
+  - scope:
+      path: "_posts"
+    values:
+      lang: "en"
+      permalink: "/writing/:title/"
+
