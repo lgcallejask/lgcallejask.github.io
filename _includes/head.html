@@ -32,12 +32,15 @@
 <!-- Favicon / RSS -->
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 
-<!-- Inline Dark Mode Script to avoid FOUC -->
+<!-- Inline Dark Mode & Language Script to avoid FOUC -->
 <script>
+  window.SITE_TRANSLATIONS = {{ site.data.translations | jsonify }};
   (function() {
     var storedTheme = localStorage.getItem('theme');
     if (storedTheme) {
       document.documentElement.setAttribute('data-theme', storedTheme);
     }
+    var storedLang = localStorage.getItem('lang') || 'en';
+    document.documentElement.setAttribute('data-lang', storedLang);
   })();
 </script>

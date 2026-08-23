@@ -1,0 +1,41 @@
+en:
+  nav:
+    writing: "Writing"
+    topics: "Topics"
+    random: "Random"
+    projects: "Projects"
+  sections:
+    topics: "Topics"
+    writing: "Writing"
+  post:
+    reading_time: "{minutes} min read"
+  topic_page:
+    breadcrumb_prefix: "Topics"
+    entries_single: "1 entry about this topic"
+    entries_plural: "{count} entries about this topic"
+  home:
+    bio: "lgcallejask is a software engineer, writer, and researcher focused on web development, digital tools, and minimalist system design. Welcome to my personal site and archive of notes and essays."
+  not_found:
+    message: "The note or page you were looking for doesn't exist, may have been moved, or is not yet translated into this language."
+    return_home: "Return to Home →"
+
+es:
+  nav:
+    writing: "Escritos"
+    topics: "Temas"
+    random: "Aleatorio"
+    projects: "Proyectos"
+  sections:
+    topics: "Temas"
+    writing: "Escritos"
+  post:
+    reading_time: "{minutes} min de lectura"
+  topic_page:
+    breadcrumb_prefix: "Temas"
+    entries_single: "1 publicación sobre este tema"
+    entries_plural: "{count} publicaciones sobre este tema"
+  home:
+    bio: "lgcallejask es un ingeniero de software, escritor e investigador enfocado en desarrollo web, herramientas digitales y diseño de sistemas minimalistas. Bienvenido a mi sitio personal y archivo de notas y ensayos."
+  not_found:
+    message: "La nota o página que buscas no existe, fue movida o aún no ha sido traducida a este idioma."
+    return_home: "Volver al Inicio →"

@@ -412,19 +412,30 @@ footer {
   font-family: var(--font-mono);
 }
 
-/* stephango.com Exact Theme Toggle Pill */
+/* Language & Theme Toggle Controls */
+#lang-toggle,
 #theme-toggle {
   height: 20px;
-  width: 36px;
   display: inline-block;
   position: relative;
   border: none;
   cursor: pointer;
   vertical-align: middle;
   outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.theme-toggle-slide {
+#theme-toggle {
+  width: 36px;
+}
+
+#lang-toggle {
+  width: 40px;
+}
+
+.theme-toggle-slide,
+.lang-toggle-slide {
   height: 20px;
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -437,19 +448,22 @@ footer {
 }
 
 #theme-toggle:hover .theme-toggle-slide,
-#theme-toggle:focus .theme-toggle-slide {
+#theme-toggle:focus .theme-toggle-slide,
+#lang-toggle:hover .lang-toggle-slide,
+#lang-toggle:focus .lang-toggle-slide {
   border-color: var(--tx-2);
   background-color: var(--ui);
 }
 
-.theme-toggle-switch {
+.theme-toggle-switch,
+.lang-toggle-switch {
   position: absolute;
   z-index: 9;
   top: 1px;
   left: 1px;
   width: 18px;
   height: 18px;
-  transition: left 0.1s linear, color 0.1s linear;
+  transition: left 0.15s ease, color 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -461,6 +475,30 @@ footer {
   height: 13px;
 }
 
+.lang-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Language toggle states */
+:root:not([data-lang="es"]) .lang-toggle-switch {
+  left: 1px;
+  color: var(--tx);
+}
+:root:not([data-lang="es"]) .lang-en-label { display: block; }
+:root:not([data-lang="es"]) .lang-es-label { display: none; }
+
+[data-lang="es"] .lang-toggle-switch {
+  left: 20px;
+  color: var(--tx);
+}
+[data-lang="es"] .lang-en-label { display: none; }
+[data-lang="es"] .lang-es-label { display: block; }
+
+/* Light / Dark Mode toggle states */
 /* Light mode: Sun icon visible on left (left: 1px) */
 :root:not([data-theme="dark"]) .icon-moon { display: none; }
 :root:not([data-theme="dark"]) .icon-sun { display: block; }
@@ -482,6 +520,11 @@ footer {
   :root:not([data-theme="light"]) .icon-moon { display: block; }
 }
 
+/* Bilingual post filtering */
+html[data-lang="en"] .post-item[data-lang="es"] { display: none !important; }
+html[data-lang="es"] .post-item[data-lang="en"] { display: none !important; }
+
+
 @media (max-width: 600px) {
   html {
     font-size: 15.5px;
@@ -500,7 +543,11 @@ footer {
     font-size: 1.05rem;
   }
 
-  /* Show only Random link and Theme Switch on mobile header */
+  nav {
+    gap: 0.85rem;
+  }
+
+  /* Show only Random link and Toggle switches on mobile header */
   nav a:not([data-nav="random"]) {
     display: none;
   }

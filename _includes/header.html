@@ -3,8 +3,18 @@
     <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
     <nav>
       {% for item in site.navigation %}
-        <a href="{{ item.url | relative_url }}" data-nav="{{ item.title | downcase }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a>
+        {% assign nav_key = item.title | downcase %}
+        <a href="{{ item.url | relative_url }}" data-nav="{{ nav_key }}" {% if page.url == item.url %}class="active"{% endif %}>
+          <span data-i18n="nav.{{ nav_key }}">{{ site.data.translations.en.nav[nav_key] | default: item.title }}</span>
+        </a>
       {% endfor %}
+      <span id="lang-toggle" title="Toggle language EN/ES (or press 'l')" aria-label="Toggle language" type="button" role="switch" aria-checked="false" tabindex="0">
+        <div class="lang-toggle-slide"></div>
+        <div class="lang-toggle-switch">
+          <span class="lang-label lang-en-label">EN</span>
+          <span class="lang-label lang-es-label">ES</span>
+        </div>
+      </span>
       <span id="theme-toggle" title="Toggle dark mode (or press 'd')" aria-label="Toggle dark mode" type="button" role="switch" aria-checked="false" tabindex="0">
         <div class="theme-toggle-slide"></div>
         <div class="theme-toggle-switch">
@@ -22,25 +32,36 @@
 
 <script>
   (function() {
-    var postUrls = [
+    var posts = [
       {% for post in site.posts %}
-        "{{ post.url | relative_url }}"{% unless forloop.last %},{% endunless %}
+        {
+          url: "{{ post.url | relative_url }}",
+          lang: "{{ post.lang | default: 'en' }}"
+        }{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
 
     function initRandomPost() {
       var randomBtn = document.querySelector('nav a[data-nav="random"]');
-      if (!randomBtn || postUrls.length === 0) return;
+      if (!randomBtn || posts.length === 0) return;
 
       randomBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        var currentLang = document.documentElement.getAttribute('data-lang') || 'en';
         var currentPath = window.location.pathname;
-        var available = postUrls.filter(function(url) {
-          return url !== currentPath && url !== currentPath + '/';
+
+        var langPosts = posts.filter(function(p) {
+          return p.lang === currentLang;
         });
-        var pool = available.length > 0 ? available : postUrls;
-        var randomIndex = Math.floor(Math.random() * pool.length);
-        window.location.href = pool[randomIndex];
+        var pool = langPosts.length > 0 ? langPosts : posts;
+
+        var available = pool.filter(function(p) {
+          return p.url !== currentPath && p.url !== currentPath + '/';
+        });
+
+        var finalPool = available.length > 0 ? available : pool;
+        var randomIndex = Math.floor(Math.random() * finalPool.length);
+        window.location.href = finalPool[randomIndex].url;
       });
     }
 

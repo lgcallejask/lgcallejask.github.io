@@ -2,6 +2,7 @@
 layout: post
 title: "Welcome to My Site"
 date: 2026-07-22 10:00:00 -0300
+lang: en
 topics:
   - meta
   - static-sites

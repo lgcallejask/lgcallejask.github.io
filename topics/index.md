@@ -4,7 +4,7 @@ title: Topics
 permalink: /topics/
 ---
 
-# Topics
+# <span data-i18n="sections.topics">{{ site.data.translations.en.sections.topics }}</span>
 
 <div class="topics-page-container">
   {% assign raw_topics = "" | split: "" %}
