@@ -199,7 +199,7 @@ a:hover {
   gap: 1.5rem;
 }
 
-.post-item:last-child {
+.post-item.is-last-visible {
   border-bottom: none;
 }
 

@@ -82,10 +82,22 @@
   }
 
   // --- Language Toggle & i18n ---
+
+  function updateLastVisible(lang) {
+    var items = document.querySelectorAll('.post-item');
+    var last = null;
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.remove('is-last-visible');
+      if (items[i].getAttribute('data-lang') === lang) last = items[i];
+    }
+    if (last) last.classList.add('is-last-visible');
+  }
+
   function initLangToggle() {
     var langBtn = document.getElementById('lang-toggle');
     var currentLang = document.documentElement.getAttribute('data-lang') || 'en';
     applyTranslations(currentLang);
+    updateLastVisible(currentLang);
 
     if (!langBtn) return;
 
@@ -101,6 +113,7 @@
       document.documentElement.setAttribute('data-lang', newLang);
       localStorage.setItem('lang', newLang);
       applyTranslations(newLang);
+      updateLastVisible(newLang);
       updateLangState();
 
       // If on a post page, switch to the translated note or 404 if not available
