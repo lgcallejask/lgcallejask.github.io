@@ -2,15 +2,36 @@
 layout: default
 ---
 
+<meta name="page-type" content="topic">
+
 <div class="topic-header">
   <h1 class="topic-title-breadcrumb"><a href="{{ '/topics/' | relative_url }}" class="topic-parent-link"><span data-i18n="topic_page.breadcrumb_prefix">{{ site.data.translations.en.topic_page.breadcrumb_prefix }}</span></a> / {{ page.topic_title }}</h1>
-  {% assign matching_posts = "" | split: "" %}
+  {% assign en_posts = "" | split: "" %}
+  {% assign es_posts = "" | split: "" %}
   {% for post in site.posts %}
     {% if post.topics contains page.topic_title %}
-      {% assign matching_posts = matching_posts | push: post %}
+      {% if post.lang == 'es' %}
+        {% assign es_posts = es_posts | push: post %}
+      {% else %}
+        {% assign en_posts = en_posts | push: post %}
+      {% endif %}
     {% endif %}
   {% endfor %}
-  <p class="topic-count">{{ matching_posts.size }} {% if matching_posts.size == 1 %}entry{% else %}entries{% endif %} about this topic</p>
+  {% assign matching_posts = en_posts | concat: es_posts %}
+  {% assign en_count_str = en_posts.size | append: "" %}
+  {% assign es_count_str = es_posts.size | append: "" %}
+  {% assign en_counter = site.data.translations.en.topic_page.entries_plural | replace: "{count}", en_count_str %}
+  {% assign es_counter = site.data.translations.es.topic_page.entries_plural | replace: "{count}", es_count_str %}
+  {% if en_posts.size == 1 %}
+    <p class="topic-count" data-lang="en"><span data-i18n="topic_page.entries_single">{{ site.data.translations.en.topic_page.entries_single }}</span></p>
+  {% else %}
+    <p class="topic-count" data-lang="en"><span data-i18n="topic_page.entries_plural" data-i18n-param-count="{{ en_posts.size }}">{{ en_counter }}</span></p>
+  {% endif %}
+  {% if es_posts.size == 1 %}
+    <p class="topic-count" data-lang="es"><span data-i18n="topic_page.entries_single">{{ site.data.translations.es.topic_page.entries_single }}</span></p>
+  {% else %}
+    <p class="topic-count" data-lang="es"><span data-i18n="topic_page.entries_plural" data-i18n-param-count="{{ es_posts.size }}">{{ es_counter }}</span></p>
+  {% endif %}
 </div>
 
 <ul class="post-list">

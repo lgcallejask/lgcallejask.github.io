@@ -524,6 +524,18 @@ footer {
 html[data-lang="en"] .post-item[data-lang="es"] { display: none !important; }
 html[data-lang="es"] .post-item[data-lang="en"] { display: none !important; }
 
+/* Bilingual topic filtering */
+html[data-lang="en"] .topic-link[data-lang="es"]      { display: none; }
+html[data-lang="en"] .topic-sep[data-lang="es"]       { display: none; }
+html[data-lang="en"] .topic-list-item[data-lang="es"] { display: none; }
+html[data-lang="es"] .topic-link[data-lang="en"]      { display: none; }
+html[data-lang="es"] .topic-sep[data-lang="en"]       { display: none; }
+html[data-lang="es"] .topic-list-item[data-lang="en"] { display: none; }
+
+/* Bilingual topic counter */
+html[data-lang="en"] .topic-count[data-lang="es"] { display: none; }
+html[data-lang="es"] .topic-count[data-lang="en"] { display: none; }
+
 
 @media (max-width: 600px) {
   html {

@@ -7,19 +7,30 @@ permalink: /topics/
 # <span data-i18n="sections.topics">{{ site.data.translations.en.sections.topics }}</span>
 
 <div class="topics-page-container">
-  {% assign raw_topics = "" | split: "" %}
+  {% assign en_topics = "" | split: "" %}
+  {% assign es_topics = "" | split: "" %}
   {% for post in site.posts %}
     {% if post.topics %}
       {% for topic in post.topics %}
-        {% assign raw_topics = raw_topics | push: topic %}
+        {% if post.lang == 'es' %}
+          {% assign es_topics = es_topics | push: topic %}
+        {% else %}
+          {% assign en_topics = en_topics | push: topic %}
+        {% endif %}
       {% endfor %}
     {% endif %}
   {% endfor %}
-  {% assign sorted_topics = raw_topics | uniq | sort %}
+  {% assign en_topics = en_topics | uniq | sort %}
+  {% assign es_topics = es_topics | uniq | sort %}
   <ul class="topic-list">
-    {% for topic in sorted_topics %}
-      <li class="topic-list-item">
-        <a href="{{ '/topics/' | append: topic | append: '/' | relative_url }}" class="topic-list-link">{{ topic }}</a>
+    {% for topic in en_topics %}
+      <li class="topic-list-item" data-lang="en">
+        <a href="{{ '/topics/' | append: topic | append: '/' | relative_url }}" class="topic-list-link" data-lang="en">{{ topic }}</a>
+      </li>
+    {% endfor %}
+    {% for topic in es_topics %}
+      <li class="topic-list-item" data-lang="es">
+        <a href="{{ '/topics/' | append: topic | append: '/' | relative_url }}" class="topic-list-link" data-lang="es">{{ topic }}</a>
       </li>
     {% endfor %}
   </ul>

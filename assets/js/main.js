@@ -116,6 +116,13 @@
       updateLastVisible(newLang);
       updateLangState();
 
+      // If on a topic page, go to /topics/ to avoid showing a wrong-language topic
+      var isTopicPage = document.querySelector('meta[name="page-type"][content="topic"]');
+      if (isTopicPage) {
+        window.location.href = '/topics/';
+        return;
+      }
+
       // If on a post page, switch to the translated note or 404 if not available
       var targetMeta = document.querySelector('meta[name="translation-' + newLang + '"]');
       if (targetMeta) {
