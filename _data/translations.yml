@@ -9,6 +9,8 @@ en:
     writing: "Writing"
   post:
     reading_time: "{minutes} min read"
+    related_notes: "Related Notes"
+    recommended: "Recommended"
   topic_page:
     breadcrumb_prefix: "Topics"
     entries_single: "1 entry about this topic"
@@ -30,6 +32,8 @@ es:
     writing: "Escritos"
   post:
     reading_time: "{minutes} min de lectura"
+    related_notes: "Notas relacionadas"
+    recommended: "Recomendado"
   topic_page:
     breadcrumb_prefix: "Temas"
     entries_single: "1 publicación sobre este tema"

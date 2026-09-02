@@ -624,4 +624,29 @@ html[data-lang="es"] .topic-count[data-lang="en"] { display: none; }
   margin: 0 auto;
 }
 
+/* Related Notes & Recommended sections */
+.post-related-section {
+  margin-top: 2rem;
+  padding-top: 0.5rem;
+}
 
+.post-related-heading {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tx-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.related-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.related-list li {
+  padding: 0.2rem 0;
+}

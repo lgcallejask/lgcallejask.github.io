@@ -42,4 +42,41 @@ layout: default
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+  {% if page.related_notes and page.related_notes.size > 0 %}
+  <aside class="post-related-section">
+    <h2 class="post-related-heading">
+      {% if page.lang == 'es' %}{{ site.data.translations.es.post.related_notes }}{% else %}{{ site.data.translations.en.post.related_notes }}{% endif %}
+    </h2>
+    <ul class="related-list">
+      {% for slug in page.related_notes %}
+        {% assign matched = site.posts | where: "slug", slug | where: "lang", page.lang | first %}
+        {% if matched %}
+        <li><a href="{{ matched.url | relative_url }}">{{ matched.title }}</a></li>
+        {% else %}
+        <li><a href="{{ '/writing/' | append: slug | append: '/' | relative_url }}">{{ slug }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+
+  {% if page.recommended and page.recommended.size > 0 %}
+  <aside class="post-related-section">
+    <h2 class="post-related-heading">
+      {% if page.lang == 'es' %}{{ site.data.translations.es.post.recommended }}{% else %}{{ site.data.translations.en.post.recommended }}{% endif %}
+    </h2>
+    <ul class="related-list">
+      {% for slug in page.recommended %}
+        {% assign matched = site.posts | where: "slug", slug | where: "lang", page.lang | first %}
+        {% if matched %}
+        <li><a href="{{ matched.url | relative_url }}">{{ matched.title }}</a></li>
+        {% else %}
+        <li><a href="{{ '/writing/' | append: slug | append: '/' | relative_url }}">{{ slug }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </aside>
+  {% endif %}
+
 </article>
